@@ -221,6 +221,18 @@ export class Pulse {
   }
 
   draw(ctx) {
+    ctx.save();
+    ctx.strokeStyle = this.color;
+    ctx.globalAlpha = 0.55;
+    ctx.lineWidth = this.radius * 1.4;
+    ctx.lineCap = 'round';
+    ctx.shadowColor = this.color;
+    ctx.shadowBlur = 16;
+    ctx.beginPath();
+    ctx.moveTo(this.x - this.vx * 0.055, this.y - this.vy * 0.055);
+    ctx.lineTo(this.x, this.y);
+    ctx.stroke();
+    ctx.restore();
     glowDot(ctx, this.x, this.y, this.radius, this.color, 14);
   }
 }
