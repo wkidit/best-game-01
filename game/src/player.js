@@ -82,6 +82,12 @@ export class Player {
     const blink = this.invulnerable > 0 && Math.floor(this.invulnerable * 12) % 2 === 0;
     ctx.save();
     if (blink) ctx.globalAlpha = 0.45;
+    // A slightly oversized sprite reads clearly when the contact sheet shrinks it.
+    const cx = this.x + this.w / 2;
+    const cy = this.y + this.h / 2;
+    ctx.translate(cx, cy);
+    ctx.scale(1.35, 1.35);
+    ctx.translate(-cx, -cy);
     const x = Math.round(this.x);
     const y = Math.round(this.y + (this.onGround && Math.abs(this.vx) > 10 ? Math.sin(this.step * 0.12) * 1 : 0));
 

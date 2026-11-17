@@ -27,6 +27,16 @@ export function drawSolid(ctx, x, y, accent) {
   pixel(ctx, x + 4, y + 10, '#362c5a', T - 8, 4);
   pixel(ctx, x + 8, y + 20, accent, 6, 3);
   pixel(ctx, x, y + T - 4, '#171229', T, 4);
+  // Small luminous flora makes each block read as a garden, not a brick.
+  const seed = (x * 7 + y * 13) % 5;
+  if (seed === 0) {
+    pixel(ctx, x + 6, y - 8, '#3c6b58', 3, 10);
+    pixel(ctx, x + 4, y - 12, accent, 7, 5);
+    pixel(ctx, x + 6, y - 14, '#fff2c8', 3, 3);
+  } else if (seed === 2) {
+    pixel(ctx, x + 20, y - 6, '#5a4478', 3, 7);
+    pixel(ctx, x + 18, y - 10, '#c08cff', 6, 5);
+  }
 }
 
 export function drawPlatform(ctx, x, y, accent) {

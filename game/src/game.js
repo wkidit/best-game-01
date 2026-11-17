@@ -321,10 +321,12 @@ export class Game {
       this.grid[y][x] = TILE.EMPTY;
       this.thornsLeft -= 1;
     }
-    const firstDews = this.dews.slice(4, 8);
+    const firstDews = this.dews.slice(4, 6);
     firstDews.forEach((dew) => { dew.taken = true; });
     this.particles.burst(this.player.x + 40, this.player.y, COLOR.glow, 26, 140);
     this.particles.burst(this.player.x - 20, this.player.y + 20, COLOR.dew, 14, 100);
+    this.particles.burst(20 * RULES.tile, 8 * RULES.tile, COLOR.wisp, 16, 120);
+    this.particles.burst(7 * RULES.tile, 13 * RULES.tile, COLOR.glow, 14, 110);
   }
 
   drawTiles() {
